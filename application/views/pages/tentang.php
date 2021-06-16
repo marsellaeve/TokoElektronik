@@ -1,0 +1,2 @@
+<h2>Tentang Toko Elektronik EveAmel</h2>
+<p>Toko Elektronik EveAmel memfokuskan/memusatkan pelayanannya pada produk/barang-barang elektronik dengan kualitas yang baik diantaranya Laptop, smartphone, robot, LED TV, lemari es, DVD, home theater, audio speaker, AC, freezer, showcase, rice cooker, mixer, mesin cuci, vacum cleaner, microwave, food prosesor dan lain-lain.</p>
