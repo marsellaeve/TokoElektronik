@@ -20,12 +20,10 @@ class Login extends CI_Controller
             else if($this->user_model->doLogin()==='admin'){
                 redirect(site_url('admin'));
             }
-            else
-            $this->load->view("admin/login_page.php");
         }
         $this->load->view("admin/login_page.php");
     }
-    
+
     public function logout()
     {
         // hancurkan semua sesi

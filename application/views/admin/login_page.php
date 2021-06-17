@@ -21,6 +21,24 @@
             </div>
         </div>
         <div class="row">
+            <?php if (!empty($this->session()->flashdata('message'))) :?>
+                <?php if ($this->session()->flashdata('message')['type'] == 'error') :?>
+				<div class="alert alert-danger">
+					<?php echo $this->session()->flashdata('message')['message']; ?>
+					<button type="button" class="close close-flash-message" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<?php else :?>
+				<div class="alert alert-success">
+					<?php echo $this->session()->flashdata('message')['message']; ?>
+
+					<button type="button" class="close close-flash-message" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+                <?php endif; ?>
+			<?php endif; ?>
             <div class="col-12 col-md-5 mx-auto mt-5">
                 <form action="<?= site_url('admin/login') ?>" method="POST">
                     <div class="form-group">
