@@ -1,6 +1,6 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
- 
+
  
 class Shopping extends CI_Controller {
  
@@ -9,6 +9,8 @@ class Shopping extends CI_Controller {
         parent::__construct();
         $this->load->library('cart');
         $this->load->model('keranjang_model');
+        $this->load->model("user_model");
+        if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
     }
  
     public function index()

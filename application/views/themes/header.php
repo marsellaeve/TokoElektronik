@@ -48,12 +48,12 @@
             <li><a href="<?php echo base_url()?>page/tentang"><i class="glyphicon glyphicon-user"></i> Tentang</a></li>
             <li><a href="<?php echo base_url()?>page/cara_bayar"><i class="glyphicon glyphicon-briefcase"></i> Cara Bayar</a></li>
             <li><a href="<?php echo base_url()?>shopping/tampil_cart"><i class="glyphicon glyphicon-shopping-cart"></i>  Keranjang Belanja</a></li>
+            <li><a class="btn btn-primary" href="<?= site_url('admin/login/logout') ?>">Logout</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
  
-    <!-- Begin page content -->
 <div class="container">
  
 <div class="row">
