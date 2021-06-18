@@ -11,25 +11,25 @@
     <link href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="<?php echo base_url()?>assets/asie/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
- 
- 
+
+
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url()?>assets/custom.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/jquery/jquery-ui.css" rel="stylesheet">
- 
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="<?php echo base_url()?>assets/asie/js/ie-emulation-modes-warning.js"></script>
- 
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
- 
+
   <body>
- 
+
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
       <div class="container">
@@ -48,18 +48,18 @@
             <li><a href="<?php echo base_url()?>page/tentang"><i class="glyphicon glyphicon-user"></i> Tentang</a></li>
             <li><a href="<?php echo base_url()?>page/cara_bayar"><i class="glyphicon glyphicon-briefcase"></i> Cara Bayar</a></li>
             <li><a href="<?php echo base_url()?>shopping/tampil_cart"><i class="glyphicon glyphicon-shopping-cart"></i>  Keranjang Belanja</a></li>
-            <li><a class="btn btn-primary" href="<?= site_url('admin/login/logout') ?>">Logout</a></li>
+            <li><a class="btn btn-primary" href="<?= base_url('/logout') ?>">Logout</a></li>
           </ul>
         </div>
       </div>
     </nav>
- 
+
 <div class="container">
- 
+
 <div class="row">
- 
+
         <div class="col-lg-3">
- 
+
           <div class="list-group">
             <a class="list-group-item"><strong>KATEGORI</strong></a>
             <a href="<?php echo base_url()?>shopping/index/" class="list-group-item">Semua</a>
@@ -72,13 +72,13 @@
                         }
             ?>
           </div><br>
- 
+
            <div class="list-group">
            <a href="<?php echo base_url()?>shopping/tampil_cart" class="list-group-item"><strong><i class="glyphicon glyphicon-shopping-cart"></i> KERANJANG BELANJA</strong></a>
-          <?php 
- 
+          <?php
+
             $cart= $this->cart->contents();
- 
+
 // If cart is empty, this will show below message.
             if(empty($cart)) {
                 ?>
@@ -96,14 +96,14 @@
                 <?php
                         }
                 ?>
- 
+
                 <?php
                 }
  ?>
             </div>
         </div>
         <!-- /.col-lg-3 -->
- 
+
         <div class="col-lg-9">
- 
+
 <div class="row">

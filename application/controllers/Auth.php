@@ -5,8 +5,9 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $libraries = array('form_validation', 'session');
         $this->load->model("user_model", 'user');
-        $this->load->library('form_validation');
+        $this->load->library($libraries);
     }
 
     public function login()
@@ -19,12 +20,12 @@ class Auth extends CI_Controller
         {
             if($this->input->post())
             {
-                if($this->user_model->doLogin()==='customer')
+                if($this->user->doLogin()==='customer')
                 {
                     redirect(site_url('shopping'));
                 }
-                else if($this->user_model->doLogin()==='admin'){
-                    redirect(site_url('admin'));
+                else if($this->user->doLogin()==='admin'){
+                    redirect(base_url('/dashboard-admin'));
                 }
             }
         }
@@ -45,13 +46,13 @@ class Auth extends CI_Controller
         {
             if($this->input->post())
             {
-                if($this->user_model->doRegisterAdmin())
+                if($this->user->doRegisterAdmin())
                 {
                     $this->session->set_flashdata(
                         'message',
                         [
                           'type' => 'success',
-                          'message' => ['Berhasil mendaftarkan akun, silahkan login terlebih dahulu']
+                          'message' => 'Berhasil mendaftarkan akun, silahkan login terlebih dahulu'
                         ]
                     );
 
@@ -71,19 +72,19 @@ class Auth extends CI_Controller
         // jika form login disubmit
         if ($_SERVER['REQUEST_METHOD'] === 'GET')
         {
-            $this->load->view("admin/register_page.php");
+            $this->load->view("user/register_page.php");
         }
         else if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             if($this->input->post())
             {
-                if($this->user_model->doRegisterCustomer())
+                if($this->user->doRegisterCustomer())
                 {
                     $this->session->set_flashdata(
                         'message',
                         [
                           'type' => 'success',
-                          'message' => ['Berhasil mendaftarkan akun, silahkan login terlebih dahulu']
+                          'message' => 'Berhasil mendaftarkan akun, silahkan login terlebih dahulu'
                         ]
                     );
 
@@ -100,6 +101,6 @@ class Auth extends CI_Controller
     {
         // hancurkan semua sesi
         $this->session->sess_destroy();
-        redirect(site_url('admin/login'));
+        redirect(base_url('login'));
     }
 }
