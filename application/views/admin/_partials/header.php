@@ -84,8 +84,8 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?=base_url('dashboard-admin/produk/list')?>" class="nav-link">
-                <?php if($this->uri->segment(3)=="list"):?>
+                <a href="<?=base_url('dashboard-admin/produk/daftar')?>" class="nav-link">
+                <?php if($this->uri->segment(3)=="daftar"):?>
                     <i class="fas fa-circle nav-icon text-info"></i>
                 <?php else: ?>
                     <i class="far fa-circle nav-icon"></i>
@@ -94,8 +94,8 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=base_url()?>index.php/dashboard1" class="nav-link">
-                <?php if($this->uri->segment(2)=="tambah-produk"):?>
+                <a href="<?=base_url('dashboard-admin/produk/tambah')?>" class="nav-link">
+                <?php if($this->uri->segment(3)=="tambah"):?>
                     <i class="fas fa-circle nav-icon text-info"></i>
                 <?php else: ?>
                     <i class="far fa-circle nav-icon"></i>

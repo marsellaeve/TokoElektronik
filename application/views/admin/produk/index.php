@@ -79,7 +79,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="<?= base_url('dashboard-admin/produk/update') ?>" method="POST" class="form-edit">
+                                                        <form enctype='multipart/form-data' action="<?= base_url('dashboard-admin/produk/update') ?>" method="POST" class="form-edit">
                                                             <input hidden id="product_id" name="product_id" value="<?= $row['id'] ?>"">
                                                             <div class="form-group">
                                                                 <label for="nama">Nama Produk</label>
@@ -92,6 +92,29 @@
                                                             <div class="form-group">
                                                                 <label for="harga">Harga</label>
                                                                 <input type="text" class="form-control" id="harga" name="harga" value="<?= $row['harga'] ?>" />
+                                                            </div>
+                                                            <input type="hidden" name="old_image" value="<?= $row['gambar'] ?>" />
+                                                            <div class="form-group">
+                                                                <label for="kategori">Kategori</label>
+                                                                <select class="custom-select" id="inputGroupSelect01" name="kategori">
+                                                                    <option value="">Pilih Kategori</option>
+                                                                <?php  foreach ($kategori as $kat){?>
+                                                                    <?php if($row['id_category'] === $kat['id']):?>
+                                                                        <option value="<?= $kat['id'] ?>" selected><?= $kat['nama_kategori']?></option>
+                                                                    <?php else:?>
+                                                                        <option value="<?= $kat['id'] ?>"><?= $kat['nama_kategori']?></option>
+                                                                    <?php endif;?>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="gambar">Gambar Produk</label>
+                                                                <div class="custom-file">
+                                                                    <input type="file" id="gambar<?= $row['id'] ?>" name="gambar" onchange="changeLabel('gambar<?= $row['id'] ?>','idgambar<?= $row['id'] ?>');" class="custom-file-input" id="validatedCustomFile">
+                                                                    <label class="custom-file-label" id="idgambar<?= $row['id'] ?>" for="validatedCustomFile">Choose file...</label>
+                                                                </div>
                                                             </div>
 
                                                             <div style="text-align: center; margin-top: 40px; float: right">
@@ -110,14 +133,14 @@
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel">Hapus Data Mahasiswa</h5>
+                                                        <h5 class="modal-title" id="deleteModalLabel">Hapus Data Produk</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p style="text-align: center; font-weight: bold; font-size: 17px">Apakah anda yakin menghapus data mahasiswa ini?</p>
-                                                        <form action="<?= base_url('dashboard-admin/produk/delete') ?>" method="POST" class="form-delete">
+                                                        <p style="text-align: center; font-weight: bold; font-size: 17px">Apakah anda yakin menghapus data produk ini?</p>
+                                                        <form action="<?= base_url('dashboard-admin/produk/hapus') ?>" method="POST" class="form-delete">
                                                             <input hidden id="product_id" name="product_id" value="<?= $row['id'] ?>"">
                                                             <div style="text-align: center; margin-top: 40px; float: right">
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>

@@ -48,5 +48,6 @@
 <script src="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/dist/js/demo.js"></script>
+<?php $this->load->view("admin/_partials/script.php") ?>
 </body>
 </html>
