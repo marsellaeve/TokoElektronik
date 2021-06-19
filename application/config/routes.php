@@ -58,3 +58,4 @@ $route['admin/register'] = 'auth/register_admin';
 $route['register'] = 'auth/register_user';
 $route['logout'] = 'auth/logout';
 $route['dashboard-admin'] = 'admin/admin/index';
+$route['dashboard-admin/produk/list'] = 'admin/produk/index';

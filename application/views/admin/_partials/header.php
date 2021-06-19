@@ -74,7 +74,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li <?php if($this->uri->segment(1)=="produk"){echo 'class=" nav-item has-treeview menu-open"';} else{ echo 'class="nav-item has-treeview"';}?>>
+          <li <?php if($this->uri->segment(2)=="produk"){echo 'class=" nav-item has-treeview menu-open"';} else{ echo 'class="nav-item has-treeview"';}?>>
             <a href="#" <?php if($this->uri->segment(1)=="produk"){echo 'class=" nav-link active"';} else{ echo'class=" nav-link"';}?>>
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
@@ -84,8 +84,8 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?=base_url()?>index.php/dashboard1" class="nav-link">
-                <?php if($this->uri->segment(2)=="daftar-produk"):?>
+                <a href="<?=base_url('dashboard-admin/produk/list')?>" class="nav-link">
+                <?php if($this->uri->segment(3)=="list"):?>
                     <i class="fas fa-circle nav-icon text-info"></i>
                 <?php else: ?>
                     <i class="far fa-circle nav-icon"></i>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
- 
+
 class Page extends CI_Controller {
     public function __construct()
     {
@@ -9,9 +9,9 @@ class Page extends CI_Controller {
         $this->load->library('cart');
         $this->load->model('keranjang_model');
         $this->load->model("user_model");
-        if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
+        if($this->user_model->isNotLogin()) redirect(base_url('login'));
     }
-    public function index(){ 
+    public function index(){
         $data['produk'] = $this->keranjang_model->get_produk_all();
         $data['kategori'] = $this->keranjang_model->get_kategori_all();
         $this->load->view('themes/header',$data);

@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">Daftar Produk</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -24,7 +24,6 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            <p style="text-align: center; font-weight: bold; font-size: 30px">Daftar Produk</p>
             <div class="content">
                 <div class="card">
                     <div class="card-body" style="color:black">
@@ -45,7 +44,7 @@
                             </div>
                             <?php endif; ?>
                         <?php endif; ?>
-                        <a href="<?php echo base_url('/dashboard-admin/produk/tambah')?>" class="btn btn-primary" style="float:right;margin-bottom:10px;">Tambah Mahasiswa</a>
+                        <a href="<?php echo base_url('/dashboard-admin/produk/tambah')?>" class="btn btn-primary" style="float:right;margin-bottom:10px;">Tambah Produk</a>
                         <table class="table table-bordered">
                             <tr>
                                 <th>No</th>
@@ -66,7 +65,7 @@
                                     <td><?= $row['deskripsi'] ?></td>
                                     <td><?= $row['harga'] ?></td>
                                     <td><?= $row['kategori'] ?></td>
-                                    <td><img style="width: 100%; height: auto;" src="<?=base_url('assets');?>/<?= $row['gambar'] ?>" alt=""></td>
+                                    <td><img style="width: 100%; height: auto;" src="<?=base_url('assets');?>/images/<?= $row['gambar'] ?>" alt=""></td>
                                     <td>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editmodal-<?= $row['id'] ?>">Edit</button>
                                         <!-- Modal -->
@@ -88,23 +87,13 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="deskripsi">Deskripsi</label>
-                                                                <textarea class="form-control" id="deskripsi" name="deskripsi" value="<?= $row['deskripsi'] ?>"></textarea>
+                                                                <textarea class="form-control" id="deskripsi" name="deskripsi"> <?= $row['deskripsi'] ?></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="harga">Harga</label>
+                                                                <input type="text" class="form-control" id="harga" name="harga" value="<?= $row['harga'] ?>" />
                                                             </div>
 
-                                                            <div class="form-group">
-                                                                <label for="telepon">Harga</label>
-                                                                <input type="text" class="form-control" id="telepon" name="telepon" value="<?= $row['telepon'] ?>" />
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label for="alamat">Alamat</label>
-                                                                <textarea style="resize: none;" class="form-control" name="alamat" id="alamat"><?= $row['alamat'] ?></textarea>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label for="jurusan">Jurusan</label>
-                                                                <input type="text" class="form-control" id="jurusan" name="jurusan" value="<?= $row['jurusan'] ?>" />
-                                                            </div>
                                                             <div style="text-align: center; margin-top: 40px; float: right">
                                                                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Tutup</button>
                                                                 <button type="submit" class="btn btn-primary update-submit" id="submit-edit-<?= $row['id'] ?>">Simpan</button>
@@ -128,8 +117,8 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <p style="text-align: center; font-weight: bold; font-size: 17px">Apakah anda yakin menghapus data mahasiswa ini?</p>
-                                                        <form action="<?= base_url('kelola-data-mahasiswa/delete') ?>" method="POST" class="form-delete">
-                                                            <input hidden id="mhs_id" name="mhs_id" value="<?= $row['id'] ?>"">
+                                                        <form action="<?= base_url('dashboard-admin/produk/delete') ?>" method="POST" class="form-delete">
+                                                            <input hidden id="product_id" name="product_id" value="<?= $row['id'] ?>"">
                                                             <div style="text-align: center; margin-top: 40px; float: right">
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
                                                                 <button type="submit" class="btn btn-success delete-submit" id="submit-delete-<?= $row['id'] ?>">Hapus</button>
