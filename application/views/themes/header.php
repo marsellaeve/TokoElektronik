@@ -40,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="" href="<?php echo base_url()?>" style="font-family:'Poppins',sans-serif;text-decoration:none;color:white;">Toko Elektronik EveAmel</a>
+          <a class="" href="<?php echo base_url()?>" style="font-family:'Poppins',sans-serif;text-decoration:none;color:white;">Toko Elektronik <i>IqbaalEvelynAmel</i></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">

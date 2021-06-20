@@ -50,7 +50,8 @@
                     </div>
                     <div class="form-group">
                         <div class="d-flex justify-content-between">
-                            <a href="<?= site_url('admin/register') ?>">Register</a>
+                            <a href="<?= site_url('admin/register') ?>">Register Admin</a> &ensp; &ensp;
+                            <a href="<?= site_url('register') ?>">Register Customer</a>
                         </div>
                     </div>
                     <div class="form-group">

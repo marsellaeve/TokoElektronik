@@ -10,7 +10,8 @@
     </div>
  <footer class="footer">
       <div class="container">
-        <p class="text-muted"><center>Toko Elektronik EveAmel</center></p>
+        <p class="text-muted"><center><strong>Copyright &copy; 2021 IqbaalEvelynAmel.</strong></center></p>
+
       </div>
     </footer>
  

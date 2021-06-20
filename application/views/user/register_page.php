@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group">
                         <div class="d-flex justify-content-between">
-                            <a href="<?= site_url('admin/login') ?>">Login</a>
+                            <a href="<?= site_url('login') ?>">Login</a>
                         </div>
                     </div>
                     <div class="form-group">
