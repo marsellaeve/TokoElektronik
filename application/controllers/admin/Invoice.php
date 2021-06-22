@@ -2,12 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Admin extends CI_Controller {
+class Invoice extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
         $libraries = array('form_validation', 'session');
         $this->load->model("user_model", 'user');
+        $this->load->model("keranjang_model", 'keranjang');
         $this->load->library($libraries);
         if($this->user->isNotLogin())
         {
@@ -31,16 +32,8 @@ class Admin extends CI_Controller {
         }
     }
     public function index(){
-        $this->load->view('admin/overview');
-    }
-
-    public function list_admin(){
-        $data['user'] = $this->user->get_admin_all();
-            $this->load->view("admin/user/admin_list",$data);
-    }
-
-    public function list_customer(){
-        $data['user'] = $this->user->get_customer_all();
-            $this->load->view("admin/user/customer_list",$data);
+        $data['order'] = $this->keranjang->get_order_all();
+        $data['detail_order'] = $this->keranjang->get_detail_order();
+        $this->load->view('admin/invoice/index',$data);
     }
 }

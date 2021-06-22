@@ -75,7 +75,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li <?php if($this->uri->segment(2)=="produk"){echo 'class=" nav-item has-treeview menu-open"';} else{ echo 'class="nav-item has-treeview"';}?>>
-            <a href="#" <?php if($this->uri->segment(1)=="produk"){echo 'class=" nav-link active"';} else{ echo'class=" nav-link"';}?>>
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Produk
@@ -101,6 +101,62 @@
                     <i class="far fa-circle nav-icon"></i>
                 <?php endif; ?>
                   <p>Tambah Produk</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li <?php if($this->uri->segment(2)=="invoice"){echo 'class=" nav-item has-treeview menu-open"';} else{ echo 'class="nav-item has-treeview"';}?>>
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-sort-numeric-up-alt"></i>
+              <p>
+                Invoice
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?=base_url('dashboard-admin/invoice/daftar-invoice')?>" class="nav-link">
+                <?php if($this->uri->segment(3)=="daftar-invoice"):?>
+                    <i class="fas fa-circle nav-icon text-info"></i>
+                <?php else: ?>
+                    <i class="far fa-circle nav-icon"></i>
+                <?php endif; ?>
+                  <p>Daftar Invoice</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li <?php if($this->uri->segment(2)=="user"){echo 'class=" nav-item has-treeview menu-open"';} else{ echo 'class="nav-item has-treeview"';}?>>
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+              <p>
+                User
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?=base_url('dashboard-admin/user/daftar-admin')?>" class="nav-link">
+                <?php if($this->uri->segment(3)=="daftar-admin"):?>
+                    <i class="fas fa-circle nav-icon text-info"></i>
+                <?php else: ?>
+                    <i class="far fa-circle nav-icon"></i>
+                <?php endif; ?>
+                  <p>Daftar Admin</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?=base_url('dashboard-admin/user/daftar-customer')?>" class="nav-link">
+                <?php if($this->uri->segment(3)=="daftar-customer"):?>
+                    <i class="fas fa-circle nav-icon text-info"></i>
+                <?php else: ?>
+                    <i class="far fa-circle nav-icon"></i>
+                <?php endif; ?>
+                  <p>Daftar Customer</p>
                 </a>
               </li>
             </ul>

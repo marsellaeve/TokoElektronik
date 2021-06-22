@@ -10,4 +10,6 @@
         var label = document.getElementById(b);
         label.innerHTML = name.files.item(0).name;
     }
+    var timeout = 3000; // in miliseconds (3*1000)
+    $('.alert').delay(timeout).fadeOut(300);
 </script>

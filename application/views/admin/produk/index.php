@@ -34,6 +34,7 @@
                                 <button type="button" class="close close-flash-message" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
+                                <?php unset($_SESSION['message']); ?>
                             </div>
                             <?php else :?>
                             <div class="alert alert-success alert-dismissible" role="alert">
@@ -41,6 +42,7 @@
                                 <button type="button" class="close close-flash-message" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
+                                <?php unset($_SESSION['message']); ?>
                             </div>
                             <?php endif; ?>
                         <?php endif; ?>

@@ -89,4 +89,22 @@ class User_model extends CI_Model
         $this->db->query($sql);
     }
 
+    public function get_admin_all()
+    {
+        $this->db->select('username, full_name, email, phone');
+        $this->db->from('users');
+        $this->db->where("users.role = 'admin'");
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_customer_all()
+    {
+        $this->db->select('username, full_name, email, phone');
+        $this->db->from('users');
+        $this->db->where("users.role = 'customer'");
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }

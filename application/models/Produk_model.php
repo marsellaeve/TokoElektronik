@@ -69,7 +69,7 @@ class Produk_model extends CI_Model {
     private function _uploadImage($nama)
     {
         $config['upload_path']          = './assets/images/';
-        $config['allowed_types']        = 'jpg|png';
+        $config['allowed_types']        = 'jpg|png|jpeg';
         $config['file_name']            = $nama;
         $config['overwrite']			= true;
         $config['max_size']             = 1024; // 1MB

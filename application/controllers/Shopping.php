@@ -1,9 +1,9 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
- 
+
 class Shopping extends CI_Controller {
- 
+
     public function __construct()
     {
         parent::__construct();
@@ -12,7 +12,7 @@ class Shopping extends CI_Controller {
         $this->load->model("user_model");
         if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
     }
- 
+
     public function index()
     {
         $kategori=($this->uri->segment(3))?$this->uri->segment(3):0;
@@ -29,7 +29,7 @@ class Shopping extends CI_Controller {
         $this->load->view('shopping/tampil_cart',$data);
         $this->load->view('themes/footer');
     }
- 
+
     public function check_out()
     {
         $data['kategori'] = $this->keranjang_model->get_kategori_all();
@@ -37,7 +37,7 @@ class Shopping extends CI_Controller {
         $this->load->view('shopping/check_out',$data);
         $this->load->view('themes/footer');
     }
- 
+
     public function detail_produk()
     {
         $id=($this->uri->segment(3))?$this->uri->segment(3):0;
@@ -47,7 +47,7 @@ class Shopping extends CI_Controller {
         $this->load->view('shopping/detail_produk',$data);
         $this->load->view('themes/footer');
     }
- 
+
     function tambah()
     {
         $data_produk= array('id' => $this->input->post('id'),
@@ -59,7 +59,7 @@ class Shopping extends CI_Controller {
         $this->cart->insert($data_produk);
         redirect('shopping');
     }
- 
+
     function hapus($rowid)
     {
         if ($rowid=="all")
@@ -74,7 +74,7 @@ class Shopping extends CI_Controller {
             }
         redirect('shopping/tampil_cart');
     }
- 
+
     function ubah_cart()
     {
         $cart_info = $_POST['cart'] ;
@@ -94,20 +94,22 @@ class Shopping extends CI_Controller {
         }
         redirect('shopping/tampil_cart');
     }
- 
+
     public function proses_order()
     {
-        //-------------------------Input data pelanggan--------------------------
-        $data_pelanggan = array('nama' => $this->input->post('nama'),
-                            'email' => $this->input->post('email'),
-                            'alamat' => $this->input->post('alamat'),
-                            'telp' => $this->input->post('telp'));
-        $id_pelanggan = $this->keranjang_model->tambah_pelanggan($data_pelanggan);
+        $this->load->helper('string');
+        $invoice = random_string('alnum',8);
         //-------------------------Input data order------------------------------
         $data_order = array('tanggal' => date('Y-m-d'),
-                            'pelanggan' => $id_pelanggan);
+                            'users' => $this->session->user_logged->user_id,
+                            'nama_tujuan' => $this->input->post('nama'),
+                            'alamat_tujuan' => $this->input->post('alamat'),
+                            'telepon_tujuan' => $this->input->post('telp'),
+                            'invoice' => $invoice,
+                            'status' => 0);
         $id_order = $this->keranjang_model->tambah_order($data_order);
         //-------------------------Input data detail order-----------------------
+        $total = 0;
         if ($cart = $this->cart->contents())
             {
                 foreach ($cart as $item)
@@ -117,13 +119,32 @@ class Shopping extends CI_Controller {
                                         'qty' => $item['qty'],
                                         'harga' => $item['price']);
                         $proses = $this->keranjang_model->tambah_detail_order($data_detail);
+                        $total = $total + (intval($item['qty']) * intval($item['price']));
                     }
+                    // var_dump($total);
+                    // die();
+                $add = $this->keranjang_model->add_total($total, $id_order );
             }
         //-------------------------Hapus shopping cart--------------------------
         $this->cart->destroy();
         $data['kategori'] = $this->keranjang_model->get_kategori_all();
+        $data['invoice'] = $this->keranjang_model->get_invoice($id_order);
+        // var_dump($data);
+        // die();
         $this->load->view('themes/header',$data);
         $this->load->view('shopping/sukses',$data);
+        $this->load->view('themes/footer');
+    }
+    public function history_shopping()
+    {
+        $id = $this->session->user_logged->user_id;
+        //-------------------------Hapus shopping cart--------------------------
+        // $this->cart->destroy();
+        $data['kategori'] = $this->keranjang_model->get_kategori_all();
+        $data['order'] = $this->keranjang_model->get_order($id);
+        $data['detail_order'] = $this->keranjang_model->get_detail_order();
+        $this->load->view('themes/header',$data);
+        $this->load->view('shopping/history_shopping',$data);
         $this->load->view('themes/footer');
     }
 }

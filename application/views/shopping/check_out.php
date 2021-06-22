@@ -11,12 +11,12 @@ if ($cart = $this->cart->contents())
         echo "<h4>Total Belanja: Rp.".number_format($grand_total,0,",",".")."</h4>";
 ?>
 <form class="form-horizontal" action="<?php echo base_url()?>shopping/proses_order" method="post" name="frmCO" id="frmCO">
-        <div class="form-group  has-success has-feedback">
+        <!-- <div class="form-group  has-success has-feedback">
             <label class="control-label col-xs-3" for="inputEmail">Email:</label>
             <div class="col-xs-9">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email">
             </div>
-        </div>
+        </div> -->
         <div class="form-group  has-success has-feedback">
             <label class="control-label col-xs-3" for="firstName">Nama :</label>
             <div class="col-xs-9">
@@ -35,8 +35,8 @@ if ($cart = $this->cart->contents())
                 <input type="tel" class="form-control" name="telp" id="telp" placeholder="No Telp">
             </div>
         </div>
- 
- 
+
+
         <div class="form-group  has-success has-feedback">
             <div class="col-xs-offset-3 col-xs-9">
                 <button type="submit" class="btn btn-primary">Proses Order</button>
