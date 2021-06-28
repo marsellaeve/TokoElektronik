@@ -8,6 +8,8 @@ class Admin extends CI_Controller {
         parent::__construct();
         $libraries = array('form_validation', 'session');
         $this->load->model("user_model", 'user');
+        $this->load->model("keranjang_model", 'keranjang');
+        $this->load->model("produk_model", 'produk');
         $this->load->library($libraries);
         if($this->user->isNotLogin())
         {
@@ -31,7 +33,11 @@ class Admin extends CI_Controller {
         }
     }
     public function index(){
-        $this->load->view('admin/overview');
+        $data['admin'] = count($this->user->get_admin_all());
+        $data['customer'] = count($this->user->get_customer_all());
+        $data['invoice'] = count($this->keranjang->get_order_all());
+        $data['produk'] = count($this->keranjang->get_produk_all());
+        $this->load->view('admin/overview', $data);
     }
 
     public function list_admin(){
