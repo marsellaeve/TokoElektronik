@@ -31,7 +31,25 @@ class Invoice extends CI_Controller {
 
         }
     }
-    public function index(){
+
+    public function index()
+    {
+        $data['order'] = $this->keranjang->get_order_all();
+        $data['detail_order'] = $this->keranjang->get_detail_order();
+        $this->load->view('admin/invoice/index',$data);
+    }
+
+    public function update()
+    {
+
+        $this->keranjang->update_invoice();
+        $this->session->set_flashdata(
+            'message',
+            [
+                'type' => 'success',
+                'message' => 'Berhasil mengganti status invoice!'
+            ]
+        );
         $data['order'] = $this->keranjang->get_order_all();
         $data['detail_order'] = $this->keranjang->get_detail_order();
         $this->load->view('admin/invoice/index',$data);

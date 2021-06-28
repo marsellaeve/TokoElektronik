@@ -54,8 +54,8 @@
                                 <th>Tujuan Pengiriman</th>
                                 <th>Daftar Beli</th>
                                 <th>Total Harga</th>
-                                <!-- <th>Status</th> -->
-                                <!-- <th style="width: 15%;">Action</th> -->
+                                <th>Status</th>
+                                <th style="width: 15%;">Action</th>
                             </tr>
                             <?php
                             $no = 1;
@@ -140,6 +140,121 @@
                                     <!-- Button trigger modal -->
                                     </td>
                                     <td><?= $row->total ?></td>
+                                    <td>
+                                    <?php if($row->status == 0)
+                                    {
+                                        echo "Belum dibayar";
+                                    }
+                                    elseif($row->status == 1)
+                                    {
+                                        echo "Perlu Dikirim";
+                                    }
+                                    elseif($row->status == 2)
+                                    {
+                                        echo "Dikirim";
+                                    }
+                                    elseif($row->status == 3)
+                                    {
+                                        echo "Sudah sampai";
+                                    }
+                                    elseif($row->status == 4)
+                                    {
+                                        echo "Selesai";
+                                    }
+                                    ?>
+                                    </td>
+                                    <td>
+                                    <?php if($row->status == 0)
+                                    {?>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#statusorder0modal-<?= $row->id ?>">Sudah dibayar</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="statusorder0modal-<?= $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <form action="<?= base_url('dashboard-admin/invoice/update') ?>" method="POST">
+                                                    <input hidden id="status" name="status" value="1">
+                                                    <input hidden id="id_order" name="id_order" value="<?= $row->id ?>">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi ganti status</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda yakin untuk mengganti status menjadi sudah dibayar?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                                                            <button type="button submit" class="btn btn-success">Yakin</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    <?php
+                                    }
+                                    elseif($row->status == 1)
+                                    {
+                                    ?>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#statusorder1modal-<?= $row->id ?>">Sudah Dikirim</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="statusorder1modal-<?= $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <form action="<?= base_url('dashboard-admin/invoice/update') ?>" method="POST">
+                                                        <input hidden id="status" name="status" value="2">
+                                                        <input hidden id="id_order" name="id_order" value="<?= $row->id ?>">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi ganti status</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda yakin untuk mengganti status menjadi sudah dikirim?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                                                            <button type="button submit" class="btn btn-success">Yakin</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    <?php
+                                    }
+                                    elseif($row->status == 2)
+                                    {
+                                    ?>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#statusorder2modal-<?= $row->id ?>">Sudah Sampai</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="statusorder2modal-<?= $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <form action="<?= base_url('dashboard-admin/invoice/update') ?>" method="POST">
+                                                    <input hidden id="status" name="status" value="3">
+                                                    <input hidden id="id_order" name="id_order" value="<?= $row->id ?>">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi ganti status</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda yakin untuk mengganti status menjadi sudah sampai?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                                                            <button type="button submit" class="btn btn-success">Yakin</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                    </td>
                                 </tr>
                             <?php
                             }

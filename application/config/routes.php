@@ -64,3 +64,5 @@ $route['dashboard-admin/produk/update'] = 'admin/produk/update';
 $route['dashboard-admin/user/daftar-admin'] = 'admin/admin/list_admin';
 $route['dashboard-admin/user/daftar-customer'] = 'admin/admin/list_customer';
 $route['dashboard-admin/invoice/daftar-invoice'] = 'admin/invoice/index';
+$route['dashboard-admin/invoice/update'] = 'admin/invoice/update';
+$route['user/invoice/update'] = 'shopping/update_invoice';

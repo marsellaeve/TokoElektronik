@@ -88,5 +88,14 @@ class Keranjang_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->update('tbl_order', $data);
     }
+
+    public function update_invoice()
+    {
+        $post = $this->input->post();
+        $data = array(
+            'status' => $post["status"],
+        );
+        $this->db->update('tbl_order', $data,  array('id' => $post['id_order']));
+    }
 }
 ?>

@@ -147,5 +147,19 @@ class Shopping extends CI_Controller {
         $this->load->view('shopping/history_shopping',$data);
         $this->load->view('themes/footer');
     }
+
+    public function update_invoice()
+    {
+        $id = $this->session->user_logged->user_id;
+        $this->keranjang_model->update_invoice();
+        //-------------------------Hapus shopping cart--------------------------
+        // $this->cart->destroy();
+        $data['kategori'] = $this->keranjang_model->get_kategori_all();
+        $data['order'] = $this->keranjang_model->get_order($id);
+        $data['detail_order'] = $this->keranjang_model->get_detail_order();
+        $this->load->view('themes/header',$data);
+        $this->load->view('shopping/history_shopping',$data);
+        $this->load->view('themes/footer');
+    }
 }
 ?>
