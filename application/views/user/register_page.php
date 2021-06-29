@@ -9,13 +9,41 @@
 
     <!-- Bootstrap core CSS-->
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <style type="text/css">
+
+::selection { background-color: #E13300; color: white; }
+::-moz-selection { background-color: #E13300; color: white; }
+
+body {
+    background:linear-gradient(45deg,#00dbde,#fc00ff) no-repeat;
+    font-family:'Poppins', sans-serif;
+}
+
+a {
+    color: #003399;	background-color: transparent; font-weight: normal;
+}
+
+h1 {
+    font-size: 39px;color: #333;line-height: 1.2;
+    background-color: transparent;font-weight: bold;text-align:center;
+}
+
+#container {
+    min-height: 90vh;
+    margin: 5% auto 5% auto;
+    padding:5%;
+    border-radius:30px;
+    background-color:white;
+    width:50%;
+}
+</style>
 </head>
 
 <body>
 
-    <div class="container">
+    <div id="container">
         <div class="row">
-            <div class="col-12 col-md-6 text-center mt-5 mx-auto p-4">
+            <div class="col-12 text-center mt-5 mx-auto p-4">
                 <h1 class="h2">Register</h1>
                 <p class="lead">Silahkan mendaftarkan akun terlebih dahulu</p>
             </div>
@@ -34,7 +62,7 @@
 				</div>
                 <?php endif; ?>
 			<?php endif; ?>
-            <div class="col-12 col-md-5 mx-auto mt-5">
+            <div class="col-12 mx-auto mt-5">
                 <form action="<?= base_url('/register') ?>" method="POST">
                     <div class="form-group">
                         <label for="username">Username</label>
